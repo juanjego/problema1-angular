@@ -12,11 +12,10 @@ export class SaludarComponent{
   public nombres: Array<string> = [];
   nombreLista: string ="";
   constructor() {
-  
   }
 
   onClick(){
-    this.saludar.emit('Hola!, desde el componente hijo');
+    this.saludar.emit('¡Hola!, desde el componente hijo');
   }
 
   onButtonClick(){
