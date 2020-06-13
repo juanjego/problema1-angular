@@ -6,11 +6,12 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./saludar.component.css']
 })
 export class SaludarComponent{
-  @Input() nombre:string = 'Mariana';
+  @Input() nombre:string = 'Marina';
   @Output() saludar: EventEmitter<string> = new EventEmitter<string>();
   
   public nombres: Array<string> = [];
-  nombreLista: string ="";
+  public nombreLista: string ="Abdi";
+
   constructor() {
   
   }
@@ -20,13 +21,9 @@ export class SaludarComponent{
   }
 
   onButtonClick(){
-    this.nombreLista=((document.getElementById("nombreLista") as HTMLInputElement).value);
-    console.log(":::::" +this.nombreLista);
     this.nombres.push(this.nombreLista);
-    this.nombreLista= "";
-    ((document.getElementById("nombreLista") as HTMLInputElement).value)="";
+    this.nombreLista = '';
     console.log(this.nombres);
-    
   }
 
 }
