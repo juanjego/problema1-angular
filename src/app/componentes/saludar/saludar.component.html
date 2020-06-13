@@ -3,8 +3,15 @@
 <small>saludar.component.html</small>
 <input type="text" name ="" id="">
 
-<p>Soy un párrafo</p>
-
 <p>
+    Soy un párrafo</p>
+
+<div>
+    <input type="text" [value] = "nombreLista">
+    <br>
+    <button (click)="onButtonClick()">Añadir nombre</button>
+</div>
+
+<p (click)="onClick()">
     Hola {{nombre}}
 </p>

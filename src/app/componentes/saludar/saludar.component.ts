@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-saludar',
@@ -6,10 +6,24 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./saludar.component.css']
 })
 export class SaludarComponent{
-  @Input() nombre:string;
+  @Input() nombre:string = 'Marina';
+  @Output() saludar: EventEmitter<string> = new EventEmitter<string>();
   
+  public nombres: Array<string> = [];
+  public nombreLista: string ="Abdi";
+
   constructor() {
   
+  }
+
+  onClick(){
+    this.saludar.emit('Hola!, desde el componente hijo');
+  }
+
+  onButtonClick(){
+    this.nombres.push(this.nombreLista);
+    this.nombreLista = '';
+    console.log(this.nombres);
   }
 
 }
