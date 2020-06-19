@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Formulario</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!--<link rel='stylesheet' type='text/css' media='screen' href='main.css'>-->
+    <script src='main.js'></script>
+</head>
+ 
+<body>
+    <form [formGroup]="miFormulario" (ngSubmit)="enviar(miFormulario.value)" novalidate >
+        
+            <h3>Inscríbete en el <strong>Campeonato de Xicotepec de Ciclismo</strong></h3>
+            <br><strong>¡Te esperamos!</strong>
+            <fieldset>
+                <legend><br>Inscripción</legend>
+                <div>
+                <div>
+                    <label><br><strong>Categorias:</strong> 
+                <input type="text" name="mycad" id="cad"  [(ngModel)]="cad" placeholder="Selecciona una categoria" class="form-control"  formControlName="opc" list="categorias" *ngIf="cad.length  < 1" Enter/> </label>
+                <div class="err" *ngIf="miFormulario.get('opc').errors && miFormulario.get('opc').dirty">
+                    <p *ngIf="miFormulario.get('opc').hasError('required')">*</p>
+                    </div>
+                <datalist id="categorias" >
+                    <option value="150 km Varonil">
+                    <option value="100 km Femenil">
+                    <option value="100 km Varonil">
+                    <option value="50 km Femenil">
+                    <option value="50 km Varonil">
+                    <option value="Gravel 100/50 km. Femenil y Varonil">
+                    <option value="Levo 50 km. Femenil y Varonil">
+                        
+                       
+                    
+                </datalist>
+                </div>
+                </div>
+                <div>
+                
+                    <label><strong>Cupón de descuento: </strong><input type="text" id="cupon" class="form-control"  formControlName="cupon" placeholder="Ingresa un Codigo" [(ngModel)]="cupon" name="cupon"  /></label>
+                </div>
+                
+                <div class="err" *ngIf="miFormulario.get('cupon').errors && miFormulario.get('cupon').dirty">
+                    <p *ngIf="miFormulario.get('cupon').hasError('required')">*</p>
+                    <p *ngIf="miFormulario.get('cupon').hasError('minlength')">Minimo 10 characteres</p>
+                    </div>
+        </fieldset>
+        
+        <fieldset>
+
+             <legend><br>Datos de Contacto</legend><br>
+             <div>
+             <div>
+                 <label><br><strong>Correo Electronico:</strong><input type="email"  id="email" name="myemail" class="form-control"  [(ngModel)]="email" formControlName="email" placeholder="Email"  ></label><br>
+                </div>
+                <div class="err" *ngIf="miFormulario.get('email').errors && miFormulario.get('email').dirty">
+                    <p *ngIf="miFormulario.get('email').hasError('required')">Campo Obligatorio</p>
+                    <p *ngIf="miFormulario.get('email').hasError('minlength')">Debe contener caracteres: (ejemplo01@gmail.com)</p>
+                    </div>
+                    <div>
+                     <label><strong>Dirección:</strong>
+                        <input type="street-address" id="direccion" [(ngModel)]="direccion" name="mydir" class="form-control"  formControlName="dir" placeholder="Ingresa una direccion" > </label>
+                    </div>
+                    <div class="err" *ngIf="miFormulario.get('dir').errors && miFormulario.get('dir').dirty">
+                        <p *ngIf="miFormulario.get('dir').hasError('required')">Campo Obligatorio</p>
+                        <p *ngIf="miFormulario.get('dir').hasError('minlength')">Minimo 20 caracteres</p>
+                        </div><br>
+                     <div>
+                     <label><strong>Estado:</strong>
+                     <input type="state" id="estado" [(ngModel)]="estado"  name="myestado" class="form-control"  formControlName="state" placeholder="Estado"  > </label></div><br>
+                     
+                     <div class="err" *ngIf="miFormulario.get('state').errors && miFormulario.get('state').dirty">
+                        <p *ngIf="miFormulario.get('state').hasError('required')">Campo Obligatorio</p>
+                        <p *ngIf="miFormulario.get('state').hasError('minlength')">Minimo 5 caracteres</p>
+                        </div><br>
+                     <div>
+                     <label><strong>Codigo Postal:</strong>
+                     <input type="postal-code" id="cp" [(ngModel)]="cp"name="mycp" value="" class="form-control"  formControlName="codP" placeholder="CP"  > </label></div><br>
+                     
+                     <div class="err" *ngIf="miFormulario.get('codP').errors && miFormulario.get('codP').dirty">
+                        <p *ngIf="miFormulario.get('codP').hasError('required')">Campo Obligatorio</p>
+                        <p *ngIf="miFormulario.get('codP').hasError('minlength')">Minimo 5 caracteres</p>
+                        </div><br>
+                     
+                     <div>
+                     <label><strong>Telefono:</strong>
+                    <input type="tel" id="telefono" [(ngModel)]="telefono" name="mytel" class="form-control"  formControlName="telefono" placeholder="Telefono" > </label></div><br>
+                     
+                    <div class="err" *ngIf="miFormulario.get('telefono').errors && miFormulario.get('telefono').dirty">
+                        <p *ngIf="miFormulario.get('telefono').hasError('required')">Campo Obligatorio</p>
+                        <p *ngIf="miFormulario.get('telefono').hasError('minlength')">Minimo y Maximo 10 caracteres</p>
+                        </div><br>
+                    <div>
+                     <label><strong>Organización/Patrocinador:</strong>
+                     <input type="organization" id="org" [(ngModel)]="org" name="myorg" class="form-control"   formControlName="organization" placeholder="Organización" > </label></div>
+                     <div class="err" *ngIf="miFormulario.get('organization').errors && miFormulario.get('organization').dirty">
+                        <p *ngIf="miFormulario.get('organization').hasError('required')">Campo Obligatorio</p>
+                        <p *ngIf="miFormulario.get('organization').hasError('minlength')">Minimo y Maximo 10 caracteres</p>
+                        </div><br>
+             </div>
+        </fieldset>
+        <button  type="submit" class="btn btn-primary" [disabled]="miFormulario.invalid" (click)="onSubmit()" >Registrar</button>
+        
+    </form>
+    <div class="alert alert-primary" role="alert">
+        <p *ngFor="let item of registro, index as i">
+            {{i}} Registro: {{item}}
+        </p>
+    </div>
+</body>
+</html>
+
+
+
+
+

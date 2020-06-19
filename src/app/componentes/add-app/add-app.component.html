@@ -1,0 +1,33 @@
+<html>
+    <h1>Registro</h1>
+<body>
+    <div class="card-body" >
+    <form id="registro" action="">
+        <label>Id:</label><br>
+        <input type="number" id="id" [(ngModel)]="id" name="id" min="100" max="105" placeholder="Id" value="100" required/><br>
+        <label>Nombre:</label><br>
+        <input type="text" id="nombre" [(ngModel)]="nombreLista"  name="nombre" placeholder="nombre" required /><br>
+        <label>Genero:</label><br>
+        <input type="radio" id="masculino" [(ngModel)]="genero" value="masculino" name="masculino" checked="checked"/>Masculino
+        <input type="radio" id="femenino" [(ngModel)]="genero" value="femenino" name="femenino"/>Femenino<br>
+        <label>Fecha de Nacimiento:</label><br>
+        <input type="number" id="fechnac" [(ngModel)]="fechanac" name="fechnac" min="1980" max="2010"  placeholder="Fecha de Nacimiento 1980-2010" 
+        value="" required pattern="[1980-2010]" *ngIf="nombres.length < 5"/><br><br>
+        <button type="submit" class="btn btn-primary mb-2" value="enviar el formulario" (click)="onButtonClick()">Añadir</button>
+
+    </form>
+    </div>
+    <div class="alert alert-secondary" role="alert">
+        {{mensaje}}
+    </div>
+    <br><br>
+    <div>
+        <div class="alert alert-primary" role="alert">
+            <p *ngFor="let item of nombres; index as i">
+                {{i}} Registro: {{item}}
+            </p>
+          </div>
+    </div>
+    
+</body>
+</html>
